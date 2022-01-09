@@ -9,3 +9,6 @@ this is test project for spring boot with reactive mongodb crud operation.
 - Mono
 - Flux
 - Crud Operation
+
+Test Urls:
+- http://localhost:8080/swagger-ui.html
