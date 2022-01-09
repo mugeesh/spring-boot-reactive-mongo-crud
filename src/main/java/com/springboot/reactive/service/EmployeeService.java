@@ -16,4 +16,6 @@ public interface EmployeeService {
     Mono<Void> deleteEmployeeById(int id);
 
     Mono<EmployeeDto> updateEmployee(Mono<EmployeeDto> empDtoMono, int id);
+
+    Flux<EmployeeDto> findEmployeeBySalaryBetween(double min_salary, double max_salary);
 }

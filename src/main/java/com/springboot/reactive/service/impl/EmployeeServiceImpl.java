@@ -38,11 +38,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Mono<EmployeeDto> updateEmployee(Mono<EmployeeDto> empDtoMono, int empId) {
-
         return  repository.findById(empId)
                 .flatMap(e -> empDtoMono.map(AppUtils::dtoToEntity))
                 .doOnNext(e -> e.setEmpId(empId))
                 .flatMap(repository::save)
+                .map(AppUtils::entityToDto);
+    }
+
+    @Override
+    public Flux<EmployeeDto> findEmployeeBySalaryBetween(double min_salary, double max_salary) {
+        return repository.findEmployeeBySalaryBetween(min_salary, max_salary)
                 .map(AppUtils::entityToDto);
     }
 

@@ -28,10 +28,10 @@ public class EmployeeController {
         return service.getEmployee(Integer.parseInt(id));
     }
 
-//    @GetMapping("/product-range")
-//    public Flux<EmployeeDto> getProductBetweenRange(@RequestParam("min") double min, @RequestParam("max")double max){
-//        return service.getEmployeeSalaryInRange(min,max);
-//    }
+    @GetMapping("/employee-salary-by-range")
+    public Flux<EmployeeDto> getEmployeeBySalaryBetweenRange(@RequestParam("min_salary") double min_salary, @RequestParam("max_salary")double max_salary){
+        return service.findEmployeeBySalaryBetween(min_salary,max_salary);
+    }
 
     @PostMapping("/addRecord")
     public Mono<EmployeeDto> saveEmployee(@RequestBody Mono<EmployeeDto> employeeDtoMono){
